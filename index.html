@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCP League</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    h1 { color: #1a73e8; }
+    .status { padding: 8px 12px; border-radius: 4px; margin: 10px 0; font-size: 0.9em; }
+    .status.connected { background: #e8f5e9; color: #2e7d32; }
+    .status.disconnected { background: #fce4ec; color: #c62828; }
+    .data-display { background: #f5f5f5; padding: 16px; border-radius: 8px; margin: 20px 0; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+    button { background: #1a73e8; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 4px; }
+    button:hover { background: #1557b0; }
+    input, textarea { width: 100%; padding: 8px; margin: 6px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>GCP League</h1>
+  <div id="status" class="status disconnected">Firebase: 未接続</div>
+
+  <h2>Dオブジェクト管理</h2>
+  <div class="data-display">
+    <strong>現在のDオブジェクト (sessionStorage / Firebase 同期):</strong>
+    <pre id="d-display">読み込み中...</pre>
+  </div>
+
+  <h3>データ更新</h3>
+  <div>
+    <label>キー: <input type="text" id="input-key" placeholder="例: name" /></label>
+    <label>値: <input type="text" id="input-value" placeholder="例: チームA" /></label>
+    <button onclick="updateD()">Dオブジェクトを更新</button>
+    <button onclick="clearD()">クリア</button>
+  </div>
+
+  <!-- Firebase compat CDN -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script src="firebase.js"></script>
+</body>
+</html>
